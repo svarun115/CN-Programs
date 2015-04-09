@@ -22,7 +22,7 @@ client, client_add = server_sock.accept()
 print("Successful Connection")
 while(True):
    decoded = client.recv(1024).decode('utf8')
-   print("Received Request:",decoded)
+   print("Received Request:",int(decoded))
    Rn = int(decoded)
    if(Rn > Sb):
       Sm += (Rn - Sb)
