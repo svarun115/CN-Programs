@@ -19,15 +19,16 @@ Sb = 0
 Sm = N-1
 
 client, client_add = server_sock.accept()
+print("Successful Connection")
 while(True):
-   print("Successful COnnection")
    decoded = client.recv(1024).decode('utf8')
-   print(decoded)
+   print("Received Request:",decoded)
    Rn = int(decoded)
    if(Rn > Sb):
       Sm += (Rn - Sb)
       Sb = Rn
       client.send(str(Rn).encode('utf8'))
+      print("Sent Sequence No:", Sb)
    if(Sb > 25):
       break
 server_sock.close()
